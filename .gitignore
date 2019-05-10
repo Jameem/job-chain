@@ -1,2 +1,5 @@
 node_modules/
 .next/
+ethereum/npm-debug.log
+npm-debug.log
+.gitignore

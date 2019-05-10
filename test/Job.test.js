@@ -53,9 +53,27 @@ describe("jobs", () => {
     assert(isBidder);
   });
 
-  it("allows a manager to accept", async () => {
+  it("allows manager to accept a bid", async () => {
     await job.methods.acceptBid(0).send({
       value: "15",
+      from: accounts[0]
+    });
+  });
+
+  it("allows accepted bidder to start job", async () => {
+    await job.methods.startJob().send({
+      from: accounts[1]
+    });
+  });
+
+  it("allows accepted bidder to request to finish job", async () => {
+    await job.methods.requestFinishJob().send({
+      from: accounts[1]
+    });
+  });
+
+  it("allows manager to finish job", async () => {
+    await job.methods.finishJob().send({
       from: accounts[0]
     });
   });
