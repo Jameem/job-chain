@@ -98,4 +98,21 @@ contract Job {
         contractBalance = this.balance;
         status = "Job Finished";
     }
+
+	function getSummary() public view returns (
+		uint, uint, uint, string, string, address
+		) {
+		return (
+			maximumBudget,
+			this.balance,
+			bidders.length,
+			jobTitle,
+			jobDescription,
+			manager
+		);
+	}
+
+	function getBiddersCount() public view returns (uint) {
+		return bidders.length;
+	}
 }

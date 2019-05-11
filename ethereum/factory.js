@@ -3,7 +3,7 @@ import JobFactory from "./build/JobFactory.json";
 
 const instance = new web3.eth.Contract(
   JSON.parse(JobFactory.interface),
-  "0xa49e144b059471297d60ef51770ec6D3e83a0737"
+  "0xd8D37155Aa4BF82851D3DaFCAe7350e92B957Fa3"
 );
 
 export default instance;
