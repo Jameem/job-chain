@@ -1,7 +1,7 @@
 const HDWalletProvider = require("truffle-hdwallet-provider");
 const Web3 = require("web3");
 const compiledFactory = require("./build/JobFactory.json");
-//0xd8D37155Aa4BF82851D3DaFCAe7350e92B957Fa3
+//0x21bfaa06Dc712C346fd8C96084824646F308822e
 const provider = new HDWalletProvider(
   "lyrics donor will pony rabbit response claw spice drive evoke provide switch",
   "https://rinkeby.infura.io/v3/6327847cebdc4efd939c08ff6a6b2c09"

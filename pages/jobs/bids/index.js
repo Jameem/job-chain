@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Table } from "semantic-ui-react";
+import { Button, Table, Label } from "semantic-ui-react";
 import Layout from "../../../components/layout";
 import { Link } from "../../../routes";
 import Job from "../../../ethereum/job";
@@ -10,6 +10,8 @@ class BidIndex extends Component {
     const job = Job(props.query.address);
 
     const bidCount = await job.methods.getBiddersCount().call();
+    const acceptedBidAmount = await job.methods.acceptedBidAmount().call();
+    const closed = await job.methods.closed().call();
 
     const bids = await Promise.all(
       Array(parseInt(bidCount))
@@ -27,14 +29,23 @@ class BidIndex extends Component {
       address: props.query.address,
       bids: bids,
       bidCount: bidCount,
-      job: job
+      // job: job,
+      acceptedBidAmount: acceptedBidAmount,
+      closed: closed
     };
   }
 
   renderRows() {
     return this.props.bids.map((bid, index) => {
       return (
-        <BidRow key={index} id={index} bid={bid} address={this.props.address} />
+        <BidRow
+          key={index}
+          id={index}
+          bid={bid}
+          address={this.props.address}
+          acceptedBidAmount={this.props.acceptedBidAmount}
+          closed={this.props.closed}
+        />
       );
     });
   }
@@ -45,14 +56,21 @@ class BidIndex extends Component {
     return (
       <Layout>
         <h3>Bids</h3>
-        <Link route={`/jobs/${this.props.address}/bids/new`}>
-          <a>
-            <Button primary floated="right" style={{ marginBottom: 10 }}>
-              {" "}
-              Add Request
-            </Button>
-          </a>
-        </Link>
+        {!this.props.closed ? (
+          <Link route={`/jobs/${this.props.address}`}>
+            <a>
+              <Button primary floated="right" style={{ marginBottom: 10 }}>
+                {" "}
+                Submit Bid
+              </Button>
+            </a>
+          </Link>
+        ) : (
+          <Label floated="right" style={{ marginBottom: 10 }}>
+            Job Closed
+          </Label>
+        )}
+
         <Table>
           <Header>
             <HeaderCell>Sl. No</HeaderCell>

@@ -3,6 +3,7 @@ import { Card, Button } from "semantic-ui-react";
 import factory from "../ethereum/factory";
 import Layout from "../components/layout";
 import { Link } from "../routes";
+import Job from "../ethereum/job";
 
 class JobIndex extends Component {
   static async getInitialProps() {
@@ -13,6 +14,8 @@ class JobIndex extends Component {
 
   renderJobs() {
     const items = this.props.jobs.map(address => {
+      const job = Job(address);
+      console.log(job);
       return {
         header: address,
         fluid: true,
@@ -36,7 +39,7 @@ class JobIndex extends Component {
             <a>
               <Button
                 floated="right"
-                content="Create Job"
+                content="Post a Job"
                 icon="add circle"
                 primary
               />

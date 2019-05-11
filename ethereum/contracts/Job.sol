@@ -92,7 +92,7 @@ contract Job {
 
     //Finish Job
     function finishJob() public isManager {
-        require(keccak256(status) == keccak256("Finish Requested"));
+        /* require(keccak256(status) == keccak256("Finish Requested")); */
 
         acceptedBidder.transfer(this.balance);
         contractBalance = this.balance;
@@ -100,7 +100,7 @@ contract Job {
     }
 
 	function getSummary() public view returns (
-		uint, uint, uint, string, string, address
+		uint, uint, uint, string, string, address, string
 		) {
 		return (
 			maximumBudget,
@@ -108,7 +108,8 @@ contract Job {
 			bidders.length,
 			jobTitle,
 			jobDescription,
-			manager
+			manager,
+			status
 		);
 	}
 

@@ -4,12 +4,15 @@ import web3 from "../ethereum/web3";
 import Job from "../ethereum/job";
 
 class BidRow extends Component {
-  onAccept = async () => {
+  onAccept = async event => {
+    let amount = event.currentTarget.dataset.amount;
+
     const job = Job(this.props.address);
 
     const accounts = await web3.eth.getAccounts();
     await job.methods.acceptBid(this.props.id).send({
-      from: accounts[0]
+      from: accounts[0],
+      value: amount
     });
   };
 
@@ -17,28 +20,33 @@ class BidRow extends Component {
     const job = Job(this.props.address);
 
     const accounts = await web3.eth.getAccounts();
-    // console.log(Job);
+
     await job.methods.finalizeRequest(this.props.id).send({
       from: accounts[0]
     });
   };
   render() {
     const { Row, Cell } = Table;
-    // console.log(this.props);
-    const { id, bid, address } = this.props;
-    const job = Job(this.props.address);
+
+    const { id, bid, address, acceptedBidAmount, closed } = this.props;
+    // console.log(bid.amount);
     return (
-      <Row disabled={job.closed} positive={true}>
+      <Row positive={true}>
         <Cell>{id + 1}</Cell>
         <Cell>{bid.bidder}</Cell>
         <Cell>{bid.amount} wei</Cell>
         <Cell>
-          {job.closed && job.address == msg.sender ? (
-            "Closed"
-          ) : (
-            <Button color="green" basic onClick={this.onAccept}>
+          {!closed && acceptedBidAmount == 0 ? (
+            <Button
+              color="green"
+              basic
+              onClick={this.onAccept}
+              data-amount={bid.amount}
+            >
               Accept Bid
             </Button>
+          ) : (
+            "Closed"
           )}
         </Cell>
       </Row>

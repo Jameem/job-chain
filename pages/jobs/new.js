@@ -69,7 +69,7 @@ class JobNew extends Component {
 
           <Message error header="Oops!" content={this.state.errorMessage} />
           <Button loading={this.state.loading} primary>
-            Create!
+            Post Job!
           </Button>
         </Form>
       </Layout>
