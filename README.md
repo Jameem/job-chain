@@ -3,7 +3,7 @@
 Platform for freelancers on the blockchain
 
 User is allowed to post projects on the blockchain and people can bid against the project. 
-When the manager accepts a bid the respective amount is collected stored in the smart contract. Whenever the project is finished
+When the post manager accepts a bid the respective amount is collected stored in the smart contract. Whenever the project is finished
 the balance is transfered to the accpeted bidder. Dapp removes the central authority and also solves the trustless problem of
 the exisiting applications up to an extend.
 
