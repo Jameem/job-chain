@@ -1,6 +1,6 @@
 # JobChain
 
-Platform for freelancers on the blockchain
+Platform for freelancers on the blockchain.
 
 User is allowed to post projects on the blockchain and people can bid against the project. 
 When the post manager accepts a bid the respective amount is collected stored in the smart contract. Whenever the project is finished
@@ -11,7 +11,7 @@ Smart contract is developed in solidity, compiled by solc and deployed to Rinkeb
 
 ## Dependencies
 
-Install these prerequisites to follow along
+Install these prerequisites to follow along,
 
 - NPM: https://nodejs.org
 - Metamask: https://metamask.io/
