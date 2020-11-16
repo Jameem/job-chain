@@ -1,13 +1,12 @@
 # JobChain
 
-Platform for freelancers on the blockchain.
+A Platform idea for freelancers on the blockchain.
 
-User is allowed to post projects on the blockchain and people can bid against the project. 
-When the post manager accepts a bid the respective amount is collected stored in the smart contract. Whenever the project is finished
-the balance is transfered to the accpeted bidder. Dapp removes the central authority and also solves the trustless problem of
-the exisiting applications up to an extend.
+## Idea
 
-Smart contract is developed in solidity, compiled by solc and deployed to Rinkeby network using web3.js. NodeJs is used on the server, ReactJs on the front-end and NextJs is used for routing. 
+User is allowed to post projects on the blockchain and people can bid against the project. When the post manager accepts a bid the respective amount is collected stored in the smart contract. Whenever the project is finished the balance is transfered to the accpeted bidder. Dapp removes the central authority and also solves the trustless problem of the exisiting applications up to an extend.
+
+Smart contracts are developed in solidity, compiled by solc and deployed to Rinkeby network using web3.js. NodeJs is used on the server, ReactJs on the front-end and NextJs is used for routing. 
 
 ## Dependencies
 
